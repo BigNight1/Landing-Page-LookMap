@@ -1,5 +1,5 @@
-import { motion, Variants } from 'framer-motion';
-import { ArrowDown, Play } from 'lucide-react';
+import { motion, Variants } from "framer-motion";
+import { ArrowDown, Play } from "lucide-react";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -11,9 +11,9 @@ const fadeUp: Variants = {
 };
 
 const stats = [
-  { value: '10–15s', label: 'actualización' },
-  { value: '6 miembros', label: 'en plan Pro' },
-  { value: '100%', label: 'batería optimizada' },
+  { value: "10–15s", label: "actualización" },
+  { value: "6 miembros", label: "en plan Pro" },
+  { value: "100%", label: "batería optimizada" },
 ];
 
 export default function Hero() {
@@ -24,7 +24,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,229,160,0.05) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 20% 80%, rgba(61,155,255,0.04) 0%, transparent 70%)',
+            "radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,229,160,0.05) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 20% 80%, rgba(61,155,255,0.04) 0%, transparent 70%)",
         }}
       />
 
@@ -32,8 +32,6 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Left col */}
           <div className="flex-1 max-w-xl">
-            
-
             {/* H1 */}
             <motion.h1
               custom={1}
@@ -41,10 +39,14 @@ export default function Hero() {
               animate="visible"
               variants={fadeUp}
               className="text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight mb-6"
-              style={{ fontFamily: 'Plus Jakarta Sans', fontWeight: 800, letterSpacing: '-0.03em', color: '#F0F4FF' }}
+              style={{
+                fontFamily: "Plus Jakarta Sans",
+                letterSpacing: "-0.04em",
+                color: "#F0F4FF",
+              }}
             >
-              Tu grupo. En el mapa.{' '}
-              <span style={{ color: '#00E5A0' }}>En tiempo real.</span>
+              Ubica, coordina y llega.{" "}
+              <span style={{ color: "#00E5A0" }}>Todo en un solo mapa</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -54,10 +56,10 @@ export default function Hero() {
               animate="visible"
               variants={fadeUp}
               className="text-lg leading-relaxed mb-10"
-              style={{ color: '#7A8CA8' }}
+              style={{ color: "#7A8CA8" }}
             >
-              Comparte ubicación, marca destinos, invita a tu grupo y todos llegan
-              al mismo punto.
+              Comparte ubicación, marca destinos, invita a tu grupo y todos
+              llegan al mismo punto.
             </motion.p>
 
             {/* CTAs */}
@@ -73,7 +75,11 @@ export default function Hero() {
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200"
-                style={{ background: '#00E5A0', color: '#080C12', fontFamily: 'Inter' }}
+                style={{
+                  background: "#00E5A0",
+                  color: "#080C12",
+                  fontFamily: "Inter",
+                }}
               >
                 <ArrowDown size={16} />
                 Descargar gratis
@@ -84,10 +90,10 @@ export default function Hero() {
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm border transition-all duration-200"
                 style={{
-                  borderColor: 'rgba(255,255,255,0.15)',
-                  color: '#F0F4FF',
-                  background: 'rgba(255,255,255,0.04)',
-                  fontFamily: 'Inter',
+                  borderColor: "rgba(255,255,255,0.15)",
+                  color: "#F0F4FF",
+                  background: "rgba(255,255,255,0.04)",
+                  fontFamily: "Inter",
                 }}
               >
                 <Play size={14} />
@@ -107,11 +113,11 @@ export default function Hero() {
                 <div key={i} className="flex flex-col">
                   <span
                     className="text-sm font-bold"
-                    style={{ color: '#00E5A0', fontFamily: 'Syne' }}
+                    style={{ color: "#00E5A0", fontFamily: "Syne" }}
                   >
                     {s.value}
                   </span>
-                  <span className="text-xs mt-0.5" style={{ color: '#7A8CA8' }}>
+                  <span className="text-xs mt-0.5" style={{ color: "#7A8CA8" }}>
                     {s.label}
                   </span>
                 </div>
@@ -128,14 +134,15 @@ export default function Hero() {
           >
             {/* Subtle glow effect behind the phone */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[400px] bg-[#00E5A0] opacity-20 blur-[100px] rounded-full pointer-events-none" />
-            
+
             <div className="relative w-[320px] sm:w-[380px] lg:w-[440px] xl:w-[480px] z-10 flex items-center justify-center">
-              <img 
-                src="/Hero.webp" 
-                alt="LookMap App Interface" 
+              <img
+                src="/Hero.webp"
+                alt="LookMap App Interface"
                 className="w-full h-auto object-contain drop-shadow-2xl"
                 style={{
-                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(0,229,160,0.15))'
+                  filter:
+                    "drop-shadow(0 20px 40px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(0,229,160,0.15))",
                 }}
               />
             </div>

@@ -31,10 +31,13 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5 flex-shrink-0">
-          <div className="w-16 rounded-md flex items-center justify-center">
-            <img src="/LogoLookmap.webp" alt="Logo" />
+        <a href="/" className="flex items-center gap-3 flex-shrink-0 group">
+          <div className="w-11 h-11 rounded-xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center bg-white/5 transition-all duration-300 group-hover:border-[#00E5A0]/40">
+            <img src="/IconLookMap.webp" alt="Logo" className="w-full h-full object-cover" />
           </div>
+          <span className="text-lg font-bold tracking-tight text-[#F0F4FF]" style={{ fontFamily: "Plus Jakarta Sans" }}>
+            LookMap
+          </span>
         </a>
 
         {/* Desktop links */}

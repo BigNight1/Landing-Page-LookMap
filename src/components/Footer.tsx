@@ -15,8 +15,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Logo + copyright */}
           <div className="flex items-center gap-3">
-            <div className="w-16 rounded-md flex items-center justify-center">
-              <img src="/LogoLookmap.webp" alt="Logo" />
+            <div className="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center bg-white/5">
+              <img src="/IconLookMap.webp" alt="Logo" className="w-full h-full object-cover" />
             </div>
 
             <span className="text-sm ml-2" style={{ color: "#7A8CA8" }}>
