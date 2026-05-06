@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
-  const [showTerms, setShowTerms] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
 
   return (
@@ -27,14 +27,13 @@ export default function Footer() {
           {/* Links */}
           <nav className="flex items-center gap-6">
             {["Privacidad", "Términos y condiciones"].map((l) => (
-              <a
+              <Link
                 key={l}
-                href="#"
+                to={l === "Términos y condiciones" ? "/terminos-condiciones" : ""}
                 onClick={(e) => {
+                  if (l === "Términos y condiciones") return;
                   e.preventDefault();
-                  if (l === "Términos y condiciones") {
-                    setShowTerms(true);
-                  } else if (l === "Privacidad") {
+                  if (l === "Privacidad") {
                     setShowPrivacy(true);
                   }
                 }}
@@ -44,204 +43,13 @@ export default function Footer() {
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#7A8CA8")}
               >
                 {l}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
       </footer>
 
-      {/* Modal de Términos */}
-      <AnimatePresence>
-        {showTerms && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowTerms(false)}
-              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-            />
 
-            {/* Modal Content */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl max-h-[85vh] flex flex-col rounded-2xl border overflow-hidden shadow-2xl"
-              style={{
-                background: "#080C12",
-                borderColor: "rgba(255,255,255,0.1)",
-                color: "#F0F4FF",
-              }}
-            >
-              {/* Header */}
-              <div
-                className="flex items-center justify-between p-6 border-b"
-                style={{ borderColor: "rgba(255,255,255,0.05)" }}
-              >
-                <h3
-                  className="text-xl font-bold"
-                  style={{ fontFamily: "Plus Jakarta Sans" }}
-                >
-                  Términos y condiciones
-                </h3>
-                <button
-                  onClick={() => setShowTerms(false)}
-                  className="p-2 rounded-lg transition-colors hover:bg-white/10"
-                  style={{ color: "#7A8CA8" }}
-                >
-                  <X size={20} />
-                </button>
-              </div>
-
-              {/* Body */}
-              <div
-                className="p-6 overflow-y-auto"
-                style={{
-                  color: "#A0B1C0",
-                  fontFamily: "Inter",
-                  fontSize: "0.95rem",
-                  lineHeight: "1.6",
-                }}
-              >
-                <h4
-                  className="text-lg font-semibold text-white mb-3"
-                  style={{ fontFamily: "Plus Jakarta Sans" }}
-                >
-                  Uso de Datos y Privacidad
-                </h4>
-                <p className="mb-4">
-                  LookMap está diseñada para permitir a los usuarios compartir
-                  su ubicación en tiempo real con personas de confianza, como
-                  amigos, familiares o miembros de un grupo.
-                </p>
-                <p className="mb-6">
-                  Al utilizar la aplicación, el usuario acepta que ciertos datos
-                  serán recolectados, almacenados y utilizados con el único
-                  propósito de brindar las funcionalidades principales del
-                  servicio.
-                </p>
-
-                <h4
-                  className="text-base font-semibold text-white mb-3"
-                  style={{ fontFamily: "Plus Jakarta Sans" }}
-                >
-                  Datos que recopilamos
-                </h4>
-                <p className="mb-3">
-                  La aplicación puede recopilar y procesar la siguiente
-                  información:
-                </p>
-                <ul className="list-disc pl-5 mb-6 space-y-1">
-                  <li>Ubicación en tiempo real del dispositivo</li>
-                  <li>Información de la batería del dispositivo</li>
-                  <li>
-                    Identificadores del usuario (como correo electrónico o ID de
-                    usuario)
-                  </li>
-                  <li>Información básica del dispositivo</li>
-                </ul>
-
-                <h4
-                  className="text-base font-semibold text-white mb-3"
-                  style={{ fontFamily: "Plus Jakarta Sans" }}
-                >
-                  Uso de la información
-                </h4>
-                <p className="mb-3">
-                  Los datos recopilados se utilizan exclusivamente para:
-                </p>
-                <ul className="list-disc pl-5 mb-6 space-y-1">
-                  <li>
-                    Mostrar la ubicación en tiempo real dentro de los grupos a
-                    los que pertenece el usuario
-                  </li>
-                  <li>
-                    Permitir compartir información con amigos o familiares
-                    autorizados
-                  </li>
-                  <li>
-                    Brindar mayor seguridad en actividades como viajes, trabajo,
-                    salidas o negocios
-                  </li>
-                  <li>
-                    Mostrar el estado de la batería del dispositivo para ayudar
-                    a otros usuarios a entender si una desconexión se debe a
-                    falta de energía u otra situación
-                  </li>
-                </ul>
-
-                <h4
-                  className="text-base font-semibold text-white mb-3"
-                  style={{ fontFamily: "Plus Jakarta Sans" }}
-                >
-                  Almacenamiento y seguridad
-                </h4>
-                <p className="mb-4">
-                  Toda la información recolectada es almacenada de forma segura.
-                  No vendemos, compartimos ni distribuimos los datos personales
-                  a terceros con fines comerciales.
-                </p>
-                <p className="mb-6">
-                  El objetivo de LookMap es ofrecer una herramienta confiable
-                  que permita a los usuarios mantenerse conectados con sus seres
-                  cercanos, priorizando siempre la seguridad y privacidad.
-                </p>
-
-                <h4
-                  className="text-base font-semibold text-white mb-3"
-                  style={{ fontFamily: "Plus Jakarta Sans" }}
-                >
-                  Consentimiento del usuario
-                </h4>
-                <p className="mb-4">
-                  Al utilizar la aplicación, el usuario acepta compartir su
-                  información, incluyendo su ubicación, únicamente con los
-                  miembros de los grupos en los que participe.
-                </p>
-                <p className="mb-6">
-                  El usuario tiene el control total sobre con quién comparte su
-                  información y puede abandonar grupos en cualquier momento.
-                </p>
-
-                <h4
-                  className="text-base font-semibold text-white mb-3"
-                  style={{ fontFamily: "Plus Jakarta Sans" }}
-                >
-                  Compromiso
-                </h4>
-                <p className="mb-2">
-                  LookMap no busca recolectar datos innecesarios ni hacer un uso
-                  indebido de la información. Nuestro compromiso es ofrecer un
-                  servicio seguro, transparente y enfocado en el bienestar del
-                  usuario.
-                </p>
-              </div>
-
-              {/* Footer / Button */}
-              <div
-                className="p-6 border-t flex justify-end"
-                style={{ borderColor: "rgba(255,255,255,0.05)" }}
-              >
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setShowTerms(false)}
-                  className="px-6 py-2.5 rounded-xl text-sm font-semibold transition-all"
-                  style={{
-                    background: "#00E5A0",
-                    color: "#080C12",
-                    fontFamily: "Inter",
-                  }}
-                >
-                  Entendido
-                </motion.button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
       {/* Modal de Privacidad */}
       <AnimatePresence>

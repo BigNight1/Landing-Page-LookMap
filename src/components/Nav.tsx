@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -13,9 +14,9 @@ export default function Nav() {
   }, []);
 
   const links = [
-    { label: "Funciones", href: "#features" },
-    { label: "Tiempo real", href: "#realtime" },
-    { label: "Precios", href: "#planes" },
+    { label: "Funciones", href: "/#features" },
+    { label: "Tiempo real", href: "/#realtime" },
+    { label: "Precios", href: "/#planes" },
   ];
 
   return (
@@ -31,46 +32,46 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-3 flex-shrink-0 group">
+        <Link to="/" className="flex items-center gap-3 flex-shrink-0 group">
           <div className="w-11 h-11 rounded-xl overflow-hidden shadow-lg border border-white/10 flex items-center justify-center bg-white/5 transition-all duration-300 group-hover:border-[#00E5A0]/40">
             <img src="/IconLookMap.webp" alt="Logo" className="w-full h-full object-cover" />
           </div>
           <span className="text-lg font-bold tracking-tight text-[#F0F4FF]" style={{ fontFamily: "Plus Jakarta Sans" }}>
             LookMap
           </span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a
+            <Link
               key={l.label}
-              href={l.href}
+              to={l.href}
               className="text-sm font-medium transition-colors duration-200"
               style={{ fontFamily: "Inter", color: "#7A8CA8" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#F0F4FF")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "#7A8CA8")}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         {/* CTA */}
         <div className="hidden md:flex">
-          <motion.a
-            href="#planes"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200"
-            style={{
-              background: "#00E5A0",
-              color: "#080C12",
-              fontFamily: "Inter",
-            }}
-          >
-            Descargar gratis
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/#planes"
+              className="inline-block px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200"
+              style={{
+                background: "#00E5A0",
+                color: "#080C12",
+                fontFamily: "Inter",
+              }}
+            >
+              Descargar gratis
+            </Link>
+          </motion.div>
         </div>
 
         {/* Mobile hamburger */}
@@ -100,24 +101,24 @@ export default function Nav() {
             }}
           >
             {links.map((l) => (
-              <a
+              <Link
                 key={l.label}
-                href={l.href}
+                to={l.href}
                 className="text-sm font-medium py-1"
                 style={{ fontFamily: "Inter", color: "#7A8CA8" }}
                 onClick={() => setMobileOpen(false)}
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#planes"
-              className="mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-center"
+            <Link
+              to="/#planes"
+              className="mt-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-center block"
               style={{ background: "#00E5A0", color: "#080C12" }}
               onClick={() => setMobileOpen(false)}
             >
               Descargar gratis
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

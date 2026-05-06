@@ -1,5 +1,6 @@
 import { motion, Variants } from "framer-motion";
 import { ArrowDown, Play } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -70,35 +71,43 @@ export default function Hero() {
               variants={fadeUp}
               className="flex flex-wrap gap-4 mb-12"
             >
-              <motion.a
-                href="#planes"
+              <motion.div
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200"
-                style={{
-                  background: "#00E5A0",
-                  color: "#080C12",
-                  fontFamily: "Inter",
-                }}
+                className="inline-block"
               >
-                <ArrowDown size={16} />
-                Descargar gratis
-              </motion.a>
-              <motion.a
-                href="#features"
+                <Link
+                  to="/#planes"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200"
+                  style={{
+                    background: "#00E5A0",
+                    color: "#080C12",
+                    fontFamily: "Inter",
+                  }}
+                >
+                  <ArrowDown size={16} />
+                  Descargar gratis
+                </Link>
+              </motion.div>
+              <motion.div
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm border transition-all duration-200"
-                style={{
-                  borderColor: "rgba(255,255,255,0.15)",
-                  color: "#F0F4FF",
-                  background: "rgba(255,255,255,0.04)",
-                  fontFamily: "Inter",
-                }}
+                className="inline-block"
               >
-                <Play size={14} />
-                Ver demo
-              </motion.a>
+                <Link
+                  to="/#features"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm border transition-all duration-200"
+                  style={{
+                    borderColor: "rgba(255,255,255,0.15)",
+                    color: "#F0F4FF",
+                    background: "rgba(255,255,255,0.04)",
+                    fontFamily: "Inter",
+                  }}
+                >
+                  <Play size={14} />
+                  Ver demo
+                </Link>
+              </motion.div>
             </motion.div>
 
             {/* Stats */}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle, Loader2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Verify() {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -90,20 +91,24 @@ export default function Verify() {
             <p className="mb-8" style={{ color: '#7A8CA8' }}>
               {errorMessage}
             </p>
-            <motion.a
-              href="/"
+            <motion.div
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="w-full py-3.5 rounded-xl text-sm font-semibold border inline-flex items-center justify-center"
-              style={{ 
-                borderColor: 'rgba(255,255,255,0.15)',
-                color: '#F0F4FF',
-                background: 'rgba(255,255,255,0.04)',
-                fontFamily: 'DM Sans' 
-              }}
+              className="w-full"
             >
-              Volver al inicio
-            </motion.a>
+              <Link
+                to="/"
+                className="w-full py-3.5 rounded-xl text-sm font-semibold border inline-flex items-center justify-center"
+                style={{ 
+                  borderColor: 'rgba(255,255,255,0.15)',
+                  color: '#F0F4FF',
+                  background: 'rgba(255,255,255,0.04)',
+                  fontFamily: 'DM Sans' 
+                }}
+              >
+                Volver al inicio
+              </Link>
+            </motion.div>
           </div>
         )}
       </motion.div>
